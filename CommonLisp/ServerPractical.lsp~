@@ -1,0 +1,9 @@
+(ql:quickload :usocket)
+
+(defun tcp-server (port)
+  (let ((socket (usocket:socket-listen usocket:*wildcard-host*
+				       port
+				       :reuse-addres t)))
+    (unwind-protect
+	 (progn
+	   (format *standard-output* "Waiting for input on ~S~%" socket)))))
