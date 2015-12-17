@@ -1,0 +1,20 @@
+ <compound stmt> --> { <stmt list> }
+  <stmt list> --> <stmt> <stmt list> | epsilon
+  <stmt> --> <compound stmt>
+  <stmt> --> if ( <expr> ) <stmt>
+  <stmt> --> if ( <expr> ) <stmt> else <stmt>
+  <stmt> --> while ( <expr> ) <stmt>
+  <stmt> --> do <stmt> while ( <expr> ) ;
+  <stmt> --> for ( <stmt> <expr> ; <expr> ) <stmt>
+  <stmt> --> case <expr> : <stmt>
+  <stmt> --> switch ( <expr> ) <stmt>
+  <stmt> --> break ; | continue ;
+  <stmt> --> return <expr> ; | goto <id> ;
+(defparameter *compound-statement* '((<compound-statement> --> ({ <stmt-list> }))
+				     (<stmt-list> --> (<stmt> <stmt-list>) '())
+				     (<stmt> --> 
+				      (if ( <expr> ) <stmt>) 
+				      (if ( <expr> ) <stmt> else <stmt>) 
+				      (while ( <expr> ) <stmt>)
+				      (do <stmt> while ( <expr> ) \;)
+				      (for ( <stmt> <expr> \; <expr> ) <stmt>)))
